@@ -96,7 +96,19 @@ async def check_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 print(f"Error setting reaction: {e}")
 
 def main():
-    app = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
+    # Create application with post_init callback
+    async def post_init(application):
+        commands = [
+            ("start", "Начало работы с ботом"),
+            ("algoquiz", "Викторина по алгоритмам"),
+            ("guess_techno", "Угадай технологию")
+        ]
+        await application.bot.set_my_commands(commands)
+    
+    app = Application.builder() \
+        .token(os.getenv("TELEGRAM_BOT_TOKEN")) \
+        .post_init(post_init) \
+        .build()
     
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("algoquiz", algoquiz))

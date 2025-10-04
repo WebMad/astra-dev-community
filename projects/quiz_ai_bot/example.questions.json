@@ -1,0 +1,31 @@
+{
+    "algorithm_questions": [
+        {
+            "description": "Бинарный поиск в отсортированном массиве",
+            "options": ["O(1)", "O(log n)", "O(n)", "O(n²)"],
+            "correct": "B"
+        },
+        {
+            "description": "Сортировка пузырьком",
+            "options": ["O(n)", "O(n log n)", "O(n²)", "O(2ⁿ)"],
+            "correct": "C"
+        }
+    ],
+    "technology_questions": [
+        {
+            "technology": "React",
+            "description": "JavaScript-библиотека для создания пользовательских интерфейсов, разрабатываемая Facebook.",
+            "accepted_answers": ["React", "React.js", "ReactJS", "React JavaScript"]
+        },
+        {
+            "technology": "Docker",
+            "description": "Платформа для разработки, доставки и запуска приложений в контейнерах.",
+            "accepted_answers": ["Docker", "Docker контейнеры", "Docker платформа"]
+        },
+        {
+            "technology": "Kubernetes",
+            "description": "Открытая система для автоматизации развертывания, масштабирования и управления контейнеризированными приложениями.",
+            "accepted_answers": ["Kubernetes", "K8s", "Кубернетес", "Кубер"]
+        }
+    ]
+}

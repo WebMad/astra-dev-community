@@ -35,27 +35,65 @@ async def algoquiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def guess_techno(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Send technology description for guessing"""
     question = random.choice(questions['technology_questions'])
-    await update.message.reply_text(
-        f"Угадайте технологию:\n\n{question['description']}"
+    sent_message = await update.message.reply_text(
+        f"Угадайте технологию (у вас 3 попытки):\n\n{question['description']}"
     )
-    context.user_data['correct_technology'] = question['technology']
+    context.user_data['current_question'] = {
+        'correct_technology': question['technology'],
+        'attempts_left': 3,
+        'message_id': sent_message.message_id  # Store the sent message's ID
+    }
     if 'accepted_answers' in question:
-        context.user_data['accepted_answers'] = question['accepted_answers']
+        context.user_data['current_question']['accepted_answers'] = question['accepted_answers']
 
 async def check_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Check user's answer to technology guessing questions"""
-    if 'correct_technology' in context.user_data:
-        user_guess = update.message.text.lower()
-        correct = context.user_data['correct_technology'].lower()
-        accepted_answers = [a.lower() for a in context.user_data.get('accepted_answers', [])]
+    if 'current_question' not in context.user_data:
+        return
         
-        if user_guess == correct or user_guess in accepted_answers:
-            await update.message.reply_text("Правильно! 🎉")
+    # Get the reply info if available
+    reply_to = getattr(update.message, 'reply_to_message', None)
+    if not reply_to or reply_to.message_id != context.user_data['current_question']['message_id']:
+        return
+        
+    user_guess = update.message.text.lower()
+    correct = context.user_data['current_question']['correct_technology'].lower()
+    accepted_answers = [a.lower() for a in context.user_data['current_question'].get('accepted_answers', [])]
+    
+    if user_guess == correct or user_guess in accepted_answers:
+        try:
+            await context.bot.set_message_reaction(
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id,
+                reaction=["🎉"]
+            )
+        except Exception as e:
+            print(f"Error setting reaction: {e}")
+        del context.user_data['current_question']
+    else:
+        context.user_data['current_question']['attempts_left'] -= 1
+        if context.user_data['current_question']['attempts_left'] > 0:
+            try:
+                await context.bot.set_message_reaction(
+                    chat_id=update.message.chat.id,
+                    message_id=update.message.message_id,
+                    reaction=["👎"]
+                )
+            except Exception as e:
+                print(f"Error setting reaction: {e}")
         else:
-            await update.message.reply_text(f"Неверно! Правильный ответ: {correct}.")
-        del context.user_data['correct_technology']
-        if 'accepted_answers' in context.user_data:
-            del context.user_data['accepted_answers']
+            try:
+                await context.bot.set_message_reaction(
+                    chat_id=update.message.chat.id,
+                    message_id=update.message.message_id,
+                    reaction=["🤡"]
+                )
+                await update.message.reply_text(
+                    f"Попытки закончились! Правильный ответ: {correct}."
+                )
+                del context.user_data['current_question']
+            except Exception as e:
+                print(f"Error setting reaction: {e}")
 
 def main():
     app = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()

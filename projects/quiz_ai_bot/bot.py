@@ -24,7 +24,7 @@ async def algoquiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     await context.bot.send_poll(
         chat_id=update.effective_chat.id,
-        question=f"Какая временная сложность у:\n{question['description']}",
+        question=f"{question['description']}",
         options=options,
         type="quiz",
         correct_option_id=correct_option,

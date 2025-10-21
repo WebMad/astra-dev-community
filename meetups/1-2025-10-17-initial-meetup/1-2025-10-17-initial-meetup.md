@@ -18,7 +18,7 @@
 
 Фото 1 | Фото 2
 -----|------
-<picture><img width="300" alt="Фото аудитории с людьми" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/assets/photo_1.jpeg"></picture> | <picture><img width="300" alt="Фото спикеров" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/assets/photo_2.jpeg"></picture>
+<picture><img width="300" alt="Фото аудитории с людьми" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/meetups/1-2025-10-17-initial-meetup/assets/photo_1.jpeg"></picture> | <picture><img width="300" alt="Фото спикеров" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/meetups/1-2025-10-17-initial-meetup/assets/photo_2.jpeg"></picture>
 
 ### Благодаря кому этот Митап состоялся:
 
@@ -28,6 +28,8 @@
  - **Чашков Даниил** - спикер, приглашенный участник из другого города
  - **Дарья Корчунова** - дизайнер, помогла сделать карточки для анонса
  - **Арман Шахназарян** - организатор, помог создать мероприятие на платформе nethouse, предоставил бойлер для кипятка, подхватил вступительно слово.
+
+**Региональный школьный технопарк** - супер крутые ребята, спасибо им, что предоставили нам площадку. Все было на высшем уровне.
 
 ### Спикеры
 

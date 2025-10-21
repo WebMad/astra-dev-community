@@ -16,6 +16,10 @@
 
 Круглый стол: Нейросети и будущее ИТ-рынка: угроза для разработчиков или новые возможности?
 
+Фото 1 | Фото 2
+-----|------
+<picture><img width="300" alt="Фото аудитории с людьми" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/assets/photo_1.jpeg"></picture> | <picture><img width="300" alt="Фото спикеров" src="https://raw.githubusercontent.com/WebMad/astra-dev-community/refs/heads/main/assets/photo_2.jpeg"></picture>
+
 ### Благодаря кому этот Митап состоялся:
 
  - **Андрей Кондауров** - спикер

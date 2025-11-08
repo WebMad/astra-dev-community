@@ -10,6 +10,8 @@
 - Kotlin Flow - [@yanasedova](https://t.me/yanasedova)
 - Какой должна быть современная среда разработки - [@WLaptew](https://t.me/WLaptew)
 - Что нужно бизнес-аналитику для автоматизации работ - [@WLaptew](https://t.me/WLaptew)
+- Как нейросети учатся видеть: от пикселей до распознавания лиц [@Katherinewss](https://t.me/Katherinewss)
+- Энергия ИИ: почему обучение нейросетей требует столько электричества [@Katherinewss](https://t.me/Katherinewss)
 
 ## Форматы
 
